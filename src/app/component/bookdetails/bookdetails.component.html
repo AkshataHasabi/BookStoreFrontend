@@ -8,34 +8,39 @@
             <h5>Books</h5>
         </div>
     <div class="no-books">
-        <h4 class="no-of-books">(1)</h4>
+        <h4 class="no-of-books">({{totalBooks}} items)</h4>
     </div>
-     <input type="text" class="search" placeholder="  search products..." name="search" >
+    <input type="text" class="search" placeholder="search products..." name="search"  [(ngModel)]="search"  (change)="searchByBookname()">
     <div class="sort-book">
-
-        <select class="sortby" >
-            <option  class="select"  selected value="default">default</option>
-            <option value="Ascending">Price:Low to High</option>
-            <option value="Descending">Price:High to Low</option>
-        </select>
+        <div  style="margin-left:60mm;margin-right: 0%;"   placeholder="sort by" >
+          <select  class="myvalue" name="filter" id="filter" placeholder="sort by" [(ngModel)]="sort" (change)="sortBy()">
+        <!-- <select class="sortby" placeholder="sortby" (change)="sortBy()" > -->
+            <option class="select" selected value="Relevance">Relevance</option>
+            <option class="select" value="Increasing">Increasing</option>
+            <option class="select" value="Decreasing">Decreasing</option>
+         </select>
+          <!-- </select> -->
+        </div>
     </div>
 
-    <!-- <img routerLink="/wish" src="../../assets/wishlist.svg" alt="wishlist image is loading..." class="cart-image img-wishlist" > --> 
+    <!-- <img routerLink="/wish" src="../../assets/icons/wishlist.svg" alt="wishlist image is loading..." class="cart-image img-wishlist" > -->
     <!-- <p class="cart-items">1</p> -->
-    <p class="cart-name">cart</p> 
-        <img routerLink="/cart" src="../assets/cart.svg" alt="cart image is loading..." class="cart-image">
+    <p class="cart-name">cart</p>
+        <img routerLink="/cart" src="../../assets/cart.svg" alt="cart image is loading..." class="cart-image">
         <p class="cart-items">10</p>
     </div>
+
+
     <div class="book-container">
-        <div class="card card-container" >
+        <div class="card card-container" *ngFor="let book of book">
             <div class="book-image">
-                <img src="../assets/book1.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
+                <img [src]="book.bookImg" class="card-img-top" alt="Book Image is loading...">
+                <h6 class="first-txt" *ngIf="book.quantity==0">Out Of Stock</h6>
             </div>
             <div class="card-body">
-            <h5 class="card-title">Stephen King</h5>
-            <p class="card-text">by xyz</p>
-            <p class="card-text">RS.150</p>
+            <h5 class="card-title">{{book.bookName}}</h5>
+            <p class="card-text">by {{book.autherName}}</p>
+            <p class="card-text">RS.{{book.price}}</p>
             <div class="button-container" >
                 <!-- <ng-container *ngFor="let i of index"> -->
                 <!-- <button type="button" class="button" (click)="addToCart(book.bookID)" *ngIf="book.quantity!=null &&  this.carts.data[0].book.bookID!=book.bookID">Add to Bag</button>
@@ -45,108 +50,7 @@
                 <!-- </ng-container> -->
                 <button type="button" class="button" >Add to Bag</button>
                 <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../../assets/book12.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">The art of comedy</h5>
-            <p class="card-text">by xyz</p>
-            <p class="card-text">RS.150</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../assets/book2.png" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">A children bible</h5>
-            <p class="card-text">by xyz</p>
-            <p class="card-text">RS.120</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../assets/book4.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">The book friends</h5>
-            <p class="card-text">by xyz</p>
-            <p class="card-text">RS.200</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../assets/book5.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">Leave the world behind</h5>
-            <p class="card-text">by xyz</p>
-            <p class="card-text">RS.100</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../assets/book6.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">Comedy writing</h5>
-            <p class="card-text">by xyz</p>
-            <p class="card-text">RS.120</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
+                <button type="button" class="button wishlist"  >Wishlist</button>
                 <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
 
             </div>
@@ -154,4 +58,8 @@
         </div>
     </div>
 </div>
+<!-- [src]="book.bookImg" -->
+<!-- src="../../assets/images/book1.jpg" -->
+
+
 <app-footer></app-footer>

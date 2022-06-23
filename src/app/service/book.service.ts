@@ -13,6 +13,25 @@ export class BookService {
   }
 
   getAllBooks() {
-    return this.http.get("http://localhost:8082/book//name/");
+    return this.http.get("http://localhost:8080/book/get");
   }
+
+   // To get all the books from database in the form of assending order by 'PRICE'
+   sortBookInAscending() {
+    return this.http.get("http://localhost:8080/book/ascsort");
+  }
+
+  // To get all the books from database in the form of descending order by 'PRICE'
+  sortBookInDescending() {
+    return this.http.get("http://localhost:8080/book/dessort");
+  }
+
+  searchBookByName(name:any) {
+    return this.http.get("http://localhost:8080/book/name/" + name);
+  }
+
+  getById(token:any){
+    return this.http.get("http://localhost:8080/book/id/"+token)
+  }
+
 }
