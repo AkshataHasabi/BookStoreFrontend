@@ -30,8 +30,8 @@ export class BookService {
     return this.http.get("http://localhost:8080/book/name/" + name);
   }
 
-  getById(token:any){
-    return this.http.get("http://localhost:8080/book/id/"+token)
+  getById(id:any){
+    return this.http.get("http://localhost:8080/book/id/"+id)
   }
 
 }

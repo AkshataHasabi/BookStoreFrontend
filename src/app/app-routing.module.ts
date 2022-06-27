@@ -14,7 +14,10 @@ import {RegisterComponent} from  './component/register/register.component';
 const routes: Routes = [
 {path:"book",component:BookComponent},
  {path:"details",component:BookdetailsComponent},
+ {path:"details/:token",component:BookdetailsComponent},
  {path:"cart",component:CartComponent},
+ {path:"cart/:id",component:CartComponent},
+ {path:"cart/:token",component:CartComponent},
  {path:"customer",component:CustomerComponent},
  {path:"login",component:LoginComponent},
  {path:"ordersummary",component:OrdersummaryComponent},

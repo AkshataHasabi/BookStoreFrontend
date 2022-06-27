@@ -17,4 +17,8 @@ export class BookComponent implements OnInit {
     console.log(this.book);
   }
 
+  addBook1(){
+    console.log(this.book);
+
+  }
 }

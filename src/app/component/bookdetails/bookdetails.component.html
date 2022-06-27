@@ -27,7 +27,7 @@
     <!-- <p class="cart-items">1</p> -->
     <p class="cart-name">cart</p>
         <img routerLink="/cart" src="../../assets/cart.svg" alt="cart image is loading..." class="cart-image">
-        <p class="cart-items">10</p>
+        <p class="cart-items">{{carts.data.length}}</p>
     </div>
 
 
@@ -48,7 +48,7 @@
                 <button type="button" class="button wishlist" *ngIf="book.quantity!=null && this.carts.data[0].book.bookID!=book.bookID">Wishlist</button>
                 <button type="button" class="button only-wishlist" *ngIf="book.quantity==null && this.carts.data[0].book.bookID!=book.bookID">Wishlist</button> -->
                 <!-- </ng-container> -->
-                <button type="button" class="button" >Add to Bag</button>
+                <button type="button" class="button" (click)="addToCart(book.bookId)">Add to Bag</button>
                 <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
                 <button type="button" class="button wishlist"  >Wishlist</button>
                 <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
@@ -58,7 +58,7 @@
         </div>
     </div>
 </div>
-<!-- [src]="book.bookImg" -->
+[src]="book.bookImg"
 <!-- src="../../assets/images/book1.jpg" -->
 
 

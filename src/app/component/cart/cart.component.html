@@ -1,24 +1,25 @@
 <p>cart works!</p>
 <div class="container">
     <div class="card mb-3">
-      <h5 class="cart-heading">My cart(1)</h5>
-      <div class="row g-0" >
+      <h5 class="cart-heading">My cart{{cart.data.length}}</h5>
+      <div class="row g-0" *ngFor="let crt of cart.data">
         <div class="col-md-4" >
-          <img src="../assets/book5.jpg" class="img-fluid rounded-start" alt="Loading...">
+          <img src="this.crt.book.bookImg" class="img-fluid rounded-start" alt="Loading...">
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Leave the world behind</h5>
-            <p class="card-text">by xyz</p>
-            <p class="card-text">RS.100</p>
+            <h5 class="card-title">{{crt.book.bookName}}</h5>
+            <p class="card-text">{{crt.book.autherName}}</p>
+            <p class="card-text">{{crt.book.price}}</p>
             <div class="quantity-change">
-              <button type="button" class="btn  quantity-button" >-</button>
-              <input type="text" name="quantity" class="book-quantity">
-              <button type="button" class="btn  quantity-button" >+</button>
-              <a class="remove" >Remove</a>
+              <button type="button" class="btn  quantity-button"  (click)=" updateCartsubstract(crt.cartId,crt)">-</button>
+              <!-- <button type="button" class="btn  quantity-button" *ngIf="crt.quantity>1" (click)="updateCartsubstract(crt.cartId,crt)">-</button> -->
+              <input type="text" name="quantity" class="book-quantity" [(ngModel)]="crt.quantity">
+              <button type="button" class="btn  quantity-button" (click)="updateCartadd(crt.cartId,crt)">+</button>
+              <a class="remove"(click)="deleteCart(crt.cartId)">Remove</a>
             </div>
             <!-- <div class="place-order">
-              <button type="button" class="btn placeorder-button" (click)="placeOrder(crt)">Place Order</button>
+              <button type="button" class="btn placeorder-button">Place Order</button>
             </div> -->
           </div>
           
