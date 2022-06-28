@@ -5,7 +5,7 @@ import { Cartmodel } from 'src/app/model/cartmodel';
 import { BookService } from 'src/app/service/book.service';
 import { CartService } from 'src/app/service/cart.service';
 import { UserService } from 'src/app/service/user.service';
-
+// import {BookImage} from 'src/assets/book2.png';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -18,26 +18,29 @@ export class CartComponent implements OnInit {
   constructor(private route: Router, private cservice:CartService, private bookservice:BookService, private userservice:UserService, private router:ActivatedRoute) { }
   // imagePath = "../../../assets/"
 
-  cart:any;
+  cart:any=[];
   user:any;
   book:any;
 
   token=this.router.snapshot.paramMap.get('token');
+
+  
   ngOnInit(): void {
     console.log("fdsgfs")
-    this.cservice.getallcartdata().subscribe((getData: any) => {
-      if (getData.data.length == undefined) {
-        this.route.navigate(["details",this.token]);
-      }
-      this.cart = getData;
-      this.user = this.cart.data[0].user.userId;
-
-    })
-    // this.cservice.getallcartdata().subscribe((data:any) => {
-    //   this.cart = data;
+    // this.cservice.getallcartdata().subscribe((getData: any) => {
+    //   if (getData.data.length == undefined) {
+    //     this.route.navigate(["details",this.token]);
+    //   }
+    //   this.cart = getData;
     //   this.user = this.cart.data[0].user.userId;
-    //   console.log(data)
+
     // })
+    this.cservice.getallcartdata().subscribe((getData:any) => {
+      this.cart = getData.data;
+      //  this.user = this.cart.data[0].user.userId;
+      console.log(getData.data)
+      // this.cart = getData.data;
+    })
 
   }
 
@@ -50,7 +53,7 @@ export class CartComponent implements OnInit {
   }
 
   updateCartsubstract(cartId: number, cart: any) {
-    cart.quantity = cart.quantity - 1;
+    cart.quantity = cart.quantity- 1;
     this.cservice.updateCartByCartQuantityByCartId(cartId, cart.quantity).subscribe((data:any) => {
     });
     }

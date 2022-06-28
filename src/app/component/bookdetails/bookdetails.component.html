@@ -25,22 +25,22 @@
 
     <!-- <img routerLink="/wish" src="../../assets/icons/wishlist.svg" alt="wishlist image is loading..." class="cart-image img-wishlist" > -->
     <!-- <p class="cart-items">1</p> -->
-    <p class="cart-name">cart</p>
-        <img routerLink="/cart" src="../../assets/cart.svg" alt="cart image is loading..." class="cart-image">
-        <p class="cart-items">{{carts.data.length}}</p>
+    <p class="cart-name">cart ({{carts.length}})</p>
+        <img routerLink="/cart" src="../../assets/cart.svg"  alt="cart image is loading..." class="cart-image">
+        <p class="cart-items"></p>
     </div>
 
 
     <div class="book-container">
-        <div class="card card-container" *ngFor="let book of book">
+        <div class="card card-container" *ngFor="let books of book">
             <div class="book-image">
-                <img [src]="book.bookImg" class="card-img-top" alt="Book Image is loading...">
+                <img [src]="this.books.bookImg" class="card-img-top" alt="Book Image is loading...">
                 <h6 class="first-txt" *ngIf="book.quantity==0">Out Of Stock</h6>
             </div>
             <div class="card-body">
-            <h5 class="card-title">{{book.bookName}}</h5>
-            <p class="card-text">by {{book.autherName}}</p>
-            <p class="card-text">RS.{{book.price}}</p>
+            <h5 class="card-title">{{books.bookName}}</h5>
+            <p class="card-text">{{books.autherName}}</p>
+            <p class="card-text">{{books.price}}</p>
             <div class="button-container" >
                 <!-- <ng-container *ngFor="let i of index"> -->
                 <!-- <button type="button" class="button" (click)="addToCart(book.bookID)" *ngIf="book.quantity!=null &&  this.carts.data[0].book.bookID!=book.bookID">Add to Bag</button>
@@ -48,7 +48,7 @@
                 <button type="button" class="button wishlist" *ngIf="book.quantity!=null && this.carts.data[0].book.bookID!=book.bookID">Wishlist</button>
                 <button type="button" class="button only-wishlist" *ngIf="book.quantity==null && this.carts.data[0].book.bookID!=book.bookID">Wishlist</button> -->
                 <!-- </ng-container> -->
-                <button type="button" class="button" (click)="addToCart(book.bookId)">Add to Bag</button>
+                <button type="button" class="button" (click)="addToCart(books.bookId)">Add to Bag</button>
                 <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
                 <button type="button" class="button wishlist"  >Wishlist</button>
                 <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
@@ -58,7 +58,7 @@
         </div>
     </div>
 </div>
-[src]="book.bookImg"
+
 <!-- src="../../assets/images/book1.jpg" -->
 
 
