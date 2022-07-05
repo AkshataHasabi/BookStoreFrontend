@@ -10,14 +10,14 @@
     <div class="no-books">
         <h4 class="no-of-books">({{totalBooks}} items)</h4>
     </div>
-    <input type="text" class="search" placeholder="search products..." name="search"  [(ngModel)]="search"  (change)="searchByBookname()">
+    <input type="text" class="search" placeholder="search products..." name="search"  [(ngModel)]="search"  (input)="searchByBookname()">
     <div class="sort-book">
         <div  style="margin-left:60mm;margin-right: 0%;"   placeholder="sort by" >
           <select  class="myvalue" name="filter" id="filter" placeholder="sort by" [(ngModel)]="sort" (change)="sortBy()">
         <!-- <select class="sortby" placeholder="sortby" (change)="sortBy()" > -->
             <option class="select" selected value="Relevance">Relevance</option>
-            <option class="select" value="Increasing">Increasing</option>
-            <option class="select" value="Decreasing">Decreasing</option>
+            <option class="select" value="Increasing">Price:Low to High</option>
+            <option class="select" value="Decreasing">Price:High to Low</option>
          </select>
           <!-- </select> -->
         </div>
@@ -25,7 +25,7 @@
 
     <!-- <img routerLink="/wish" src="../../assets/icons/wishlist.svg" alt="wishlist image is loading..." class="cart-image img-wishlist" > -->
     <!-- <p class="cart-items">1</p> -->
-    <p class="cart-name">cart ({{carts.length}})</p>
+    <p class="cart-name">cart{{carts.length}}</p>
         <img routerLink="/cart" src="../../assets/cart.svg"  alt="cart image is loading..." class="cart-image">
         <p class="cart-items"></p>
     </div>

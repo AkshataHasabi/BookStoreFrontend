@@ -5,6 +5,8 @@ import { NgForm } from '@angular/forms';
 import { Cartmodel } from 'src/app/model/cartmodel';
 import { CartService } from 'src/app/service/cart.service';
 import { UserService } from 'src/app/service/user.service';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
+import { InteractionService } from 'src/app/service/interaction.service';
 
 @Component({
   selector: 'app-bookdetails',
@@ -18,32 +20,40 @@ export class BookdetailsComponent implements OnInit {
   totalBooks: number = 10;
   sort:string;
   search:any;
-  
-  token=this.route.snapshot.paramMap.get("token");
+  bookData:any;
+  token=this.route.snapshot.paramMap.get('token');
 
-  cart:Cartmodel=new Cartmodel(0,0,0);
+  cart:Cartmodel=new Cartmodel();
   carts: any;
   userId: any;
   bookId:any;
   temp: any;
+  public TOKEN:any = "";
 
-  constructor(private router:Router,private route:ActivatedRoute,private cservice:CartService,private service:BookService,private bookservice:BookService, private userservice:UserService) { }
+  constructor(private router:Router,private route:ActivatedRoute,private iservice:InteractionService,private cservice:CartService,private service:BookService,private bookservice:BookService, private userservice:UserService) { }
 
   ngOnInit(): void {
-    this.userId=this.token
-    console.log(this.userId);
+    this.TOKEN=localStorage.getItem("token");
+    console.log(this.TOKEN);
+    //  this.userId=this.token
+    // console.log(this.userId);
     this.getCartValue();
+
     this.service.getAllBooks().subscribe((data:any)=>{
       console.log("Book Data retrieved successfully",data);
       this.book=data.data;
       this.totalBooks=this.book.length;
     });
 
-  //   this.userservice.getUserRecordByToken(this.token).subscribe((getData:any)=>{
-  //     console.log("User record retrieved successfully");
-  //      this.userId=getData.data;
+    this.userservice.getUserRecordByToken(this.token).subscribe((getData:any)=>{
+      console.log("User record retrieved successfully");
+       this.userId=getData.data;
+       console.log(this.userId)
+  });
+  // this.cservice.getCartRecordByUserId(this.user[0].user.userId).subscribe(data=>{
+  //   console.log("data success",data);
+  //   this.carts=data;
   // });
-
  
 
   }
@@ -53,6 +63,9 @@ export class BookdetailsComponent implements OnInit {
     this.cservice.getallcartdata().subscribe((getData:any) => {
       this.carts = getData.data;
       console.log(this.carts);
+      // this.bookservice.getAllBooks().subscribe((data:any)=>{
+      //   console.log("dfdj",data)
+      //   this.book=data;
       //  this.user = this.cart.data[0].user.userId;
       // console.log(getData.data)
       // this.cart = getData.data;
@@ -88,51 +101,14 @@ export class BookdetailsComponent implements OnInit {
       console.log("fdgd",data);
     });
 }
-// getById(){
-//   this.service.getById(this.token).subscribe((data:any)=>{this.book=data.data});
-// }
-
-// addToCart(bookId: number) {
-  // let i = 0
-  // if (this.carts.data != 0) {
-  //   for (; i < this.carts.data.length; i++) {
-  //     if (this.carts.data[i].book.bookId == bookId) {
-  //       alert("book is already in cart");
-  //       break;
-  //     }
-  //   }
-
-  //   if (this.carts.data.length==0) {
-  //     this.cart.bookId = bookId;
-  //     this.cart.userId = this.userId;
-  //     this.cart.quantity = 1;
-  //     this.cservice.addCart(this.cart).subscribe((data: any) => {
-  //       this.carts = data.data;
-  //       window.location.reload();
-
-  //     });
-  //   }
-  // else {
-    // this.cart.bookId = bookId;
-    // this.cart.userId = this.userId
-    // this.cart.quantity = 1;
-  //   this.cservice.getcartbibookid().subscribe((data: any) => {
-  //     this.carts = data.data;
-  //     window.location.reload();
-  //   });
-  // }
-// }
 
 addToCart(Id:any){
-  // console.log(Id)
   let i=0;
-  // console.log("hello");
-  //  console.log(this.carts.data.length);
-    // if(this.carts.data.length == 0){
-      if(this.carts.length == i){
+        if(this.carts.length == i){
       this.cart.bookId=Id;
-      this.cart.userId=this.user.userId;
-      console.log("hello");
+      // this.cart.userId=this.user.userId;
+      // console.log("hello",this.cart.userId);
+      this.cart.token= this.TOKEN;
       this.cart.quantity=1;
       console.log(this.cart);
       console.log("hellow");
@@ -141,16 +117,39 @@ addToCart(Id:any){
         this.cart=getData.data;
         window.location.reload();
       });
-  }
-  else{
-    this.cart.bookId=60;
-    this.cart.userId=26;
-    this.cart.quantity=4;
-    this.cservice.addCart(this.cart).subscribe((getData:any) =>{
-      console.log("Cart Added !");
-      this.cart=getData;
-      //window.location.reload();
+  }else{
+    this.cservice.getCartRecordByBookId(Id).subscribe(data=>{
+      this.temp=data;
+      console.log(this.temp);
+      if(this.temp.data==null){
+        this.cart.bookId=Id;
+        console.log("bookid",this.cart.bookId)
+        // this.cart.userId=this.user.userId;
+        // console.log("userid",this.cart.userId)
+        this.cart.token= this.TOKEN;
+        console.log(this.cart.token);
+        this.cart.quantity=this.book.quantity;
+        //console.log(this.cart);
+        this.cservice.addCart(this.cart).subscribe((getData:any) =>{
+          console.log("Cart Added !");
+          this.cart=getData.data;
+          window.location.reload();
+        });
+      }
+      else{
+        alert("Book Already present in the cart!!!");
+      }
+      window.location.reload();
     });
+  // else{
+  //   this.cart.bookId=60;
+  //   this.cart.userId=26;
+  //   this.cart.quantity=4;
+  //   this.cservice.addCart(this.cart).subscribe((getData:any) =>{
+  //     console.log("Cart Added !");
+  //     this.cart=getData;
+  //     //window.location.reload();
+  //   });
     // this.cservice.getCartRecordByBookId(Id).subscribe((data:any)=>{
     //   this.temp=data.data;
     //   console.log(this.temp.data);

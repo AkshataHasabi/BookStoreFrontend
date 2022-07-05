@@ -12,6 +12,7 @@ import {RegisterComponent} from  './component/register/register.component';
 
 
 const routes: Routes = [
+{path:"",redirectTo:"/login",pathMatch:"full"},
 {path:"book",component:BookComponent},
  {path:"details",component:BookdetailsComponent},
  {path:"details/:token",component:BookdetailsComponent},

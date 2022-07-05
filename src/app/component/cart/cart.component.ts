@@ -18,7 +18,7 @@ export class CartComponent implements OnInit {
   constructor(private route: Router, private cservice:CartService, private bookservice:BookService, private userservice:UserService, private router:ActivatedRoute) { }
   // imagePath = "../../../assets/"
 
-  cart:any=[];
+  cart:any;
   user:any;
   book:any;
 
@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
     // })
     this.cservice.getallcartdata().subscribe((getData:any) => {
       this.cart = getData.data;
-      //  this.user = this.cart.data[0].user.userId;
+       this.user = this.cart.data[0].user.userId;
       console.log(getData.data)
       // this.cart = getData.data;
     })

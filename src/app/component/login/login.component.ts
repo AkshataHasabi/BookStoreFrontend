@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Loginmodel } from 'src/app/model/loginmodel';
 import { UserService } from 'src/app/service/user.service';
-
+import { InteractionService } from 'src/app/service/interaction.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   userId!: any
 
   
-  constructor(private service:UserService, private route:Router) { }
+  constructor(private service:UserService, private route:Router, private intr:InteractionService) { }
 
   ngOnInit(): void {
   }
@@ -40,10 +40,11 @@ export class LoginComponent implements OnInit {
       this.service.userLogin(this.login).subscribe((data:any)=>{
         this.service.getToken(this.login.email).subscribe((getData:any)=>{
           console.log("Token retrieved successfully",getData);
-          this.token=getData;
-          console.log("Token from login",this.token.data);
-          // this.interaction.sendToken(this.token.data);
-          this.route.navigate(['details',this.token.data]);
+          this.token=getData.data;
+          localStorage.setItem("token",this.token);
+          console.log("Token from login",this.token);
+          this.intr.sendToken(this.token);
+          this.route.navigate(['details',this.token]);
         });
         console.log("User Logged In Successfully",data); 
       },error=>{

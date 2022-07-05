@@ -25,7 +25,7 @@ getToken(email:any){
 }
 
 getUserRecordByToken(token:any){
-  return this.http.get("http://localhost:8080/user/getAll/"+ token)
+  return this.http.get("http://localhost:8080/user/getAll/"+token)
 }
 
 }
