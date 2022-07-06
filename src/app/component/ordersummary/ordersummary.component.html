@@ -2,18 +2,19 @@
 <div class="container">
     <div class="card mb-3">
       <h5 class="order-title">Order Summary</h5>
-        <div class="row g-0" >
+        <div class="row g-0" *ngFor="let ordr of order.data">
           <div class="col-md-4" >
-            <img src="../../assets/book5.jpg" class="img-fluid rounded-start" alt="Loading...">
+            <img [src]="this.ordr.bookData.bookImg" class="img-fluid rounded-start" alt="Loading...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Leave the world behind</h5>
-              <p class="card-text">by xyz</p>
-              <p class="card-text">RS.100</p>
+              <h5 class="card-title">{{ordr.bookData.bookName}}</h5>
+              <p class="card-text">By{{ordr.bookData.autherName}}</p>
+              <p class="card-text">RS{{ordr.bookData.price * ordr.quantity}}</p>
             </div>
           </div>
         </div> 
-        <button routerLink="/order" type="button" class="checkout" >Checkout</button> 
+        <button  type="button" class="checkout" (click)="money()">TotalAmount:<p class="card-text"> Price = {{amount.data}}</p></button> 
+        <button type="button" class="checkout" (click)="orderDetails()">Checkout</button> 
       </div>
     </div>

@@ -28,4 +28,7 @@ getUserRecordByToken(token:any){
   return this.http.get("http://localhost:8080/user/getAll/"+token)
 }
 
+updateUserRecordById(token:any,user:any){
+  return this.http.put("http://localhost:8080/user/update/"+token,user);
+}
 }

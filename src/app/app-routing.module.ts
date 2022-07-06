@@ -20,8 +20,10 @@ const routes: Routes = [
  {path:"cart/:id",component:CartComponent},
  {path:"cart/:token",component:CartComponent},
  {path:"customer",component:CustomerComponent},
+ {path:"customer/:token",component:CustomerComponent},
  {path:"login",component:LoginComponent},
  {path:"ordersummary",component:OrdersummaryComponent},
+ {path:"ordersummary/:token",component:OrdersummaryComponent},
  {path:"order",component:OrderComponent},
  {path:"register",component:RegisterComponent},
  {path:"changepassword",component:ForgotpasswordComponent}

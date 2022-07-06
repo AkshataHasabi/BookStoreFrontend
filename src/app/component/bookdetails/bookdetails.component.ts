@@ -110,8 +110,8 @@ addToCart(Id:any){
       // console.log("hello",this.cart.userId);
       this.cart.token= this.TOKEN;
       this.cart.quantity=1;
-      console.log(this.cart);
-      console.log("hellow");
+      // console.log(this.cart);
+      // console.log("hellow");
       this.cservice.addCart(this.cart).subscribe((getData:any) =>{
         console.log("Cart Added successfully !");
         this.cart=getData.data;

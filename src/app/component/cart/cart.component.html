@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card mb-3">
     <h5 class="cart-heading">My cart({{cart.length}})</h5>
-    <div class="row g-0" *ngFor="let crt of cart">
+    <div class="row g-0" *ngFor="let crt of cart.data">
       <div class="col-md-4" >
         <img  [src]="crt.bookData.bookImg" width="80" hight="120"class="img-fluid rounded-start" alt="Loading...">
       </div>
@@ -26,7 +26,7 @@
       
     </div>
     <div class="place-order" >
-      <button routerLink="/customer" type="button" class="btn placeorder-button" >Place Order</button>
+      <button type="button" class="btn placeorder-button" (click)="placeOrder()" >Place Order</button>
     </div>  
   </div>
 

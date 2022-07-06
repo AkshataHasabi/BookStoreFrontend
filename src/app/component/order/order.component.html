@@ -6,7 +6,7 @@
     </div>
     <div class="message" >
       <h6>hurray!!!your order is confirmed</h6>
-      <h6>the order id  is</h6><h6 > #1</h6><h6>save the order id for</h6>
+      <h6>the order id  is</h6><h6 *ngFor="let ordr of order.data" >#{{ordr.orderId}}</h6><h6>save the order id for</h6>
       <h6>further communication.</h6>
     </div>
     <div class="table-details">
@@ -26,6 +26,6 @@
     <!-- <div>
       <button type="button" >Continue Shopping</button>
     </div> -->
-    <button routerLink="/details" type="button"  >Continue Shopping</button>
+    <button type="button" (click)="toDash()">Continue Shopping</button>
   </div>
   <app-footer></app-footer>
