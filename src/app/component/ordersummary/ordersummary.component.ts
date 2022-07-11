@@ -10,38 +10,34 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class OrdersummaryComponent implements OnInit {
 
-  book:any;
-  order:any;
+  book: any;
+  order: any;
   cart!: any;
-  amount:any;
+  amount: any;
 
-  constructor(private cartService:BookService,private bookService:BookService,private router:Router,private orderService:OrderService) { }
+  constructor(private cartService: BookService, private bookService: BookService, private router: Router, private orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.orderService.getAllOrders().subscribe((getData:any)=>{
-      console.log("order Data Retrieved successfully",getData);
-      this.order=getData;
-   });
-   this.bookService.getById(this.order.bookid).subscribe((data:any)=>{
-    console.log("Book data retrieved",data);
-    this.book = data.data;
-  })
-
-  this.money();
+    this.orderService.getAllOrders().subscribe((getData: any) => {
+      console.log("order Data Retrieved successfully", getData);
+      this.order = getData;
+    });
+    this.bookService.getById(this.order.bookid).subscribe((data: any) => {
+      console.log("Book data retrieved", data);
+      this.book = data.data;
+    })
+    this.money();
   }
 
-  
-  orderDetails(){
+  orderDetails() {
     this.router.navigate(['order']);
   }
 
-
-money(){
-    this.orderService.getTotalPrice().subscribe((data:any)=>{
-      console.log("Data",data);
+  money() {
+    this.orderService.getTotalPrice().subscribe((data: any) => {
+      console.log("Data", data);
       this.amount = data;
-      console.log("Money",this.amount);
+      console.log("Money", this.amount);
     })
   }
-
 }

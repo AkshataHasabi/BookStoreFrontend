@@ -8,17 +8,16 @@ import { BookService } from 'src/app/service/book.service';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
-  book:Bookmodel= new Bookmodel("","","","",0,0);
+  book: Bookmodel = new Bookmodel("", "", "", "", 0, 0);
   constructor() { }
 
   ngOnInit(): void {
   }
-  addBook(){
+  addBook() {
     console.log(this.book);
   }
 
-  addBook1(){
+  addBooks() {
     console.log(this.book);
-
   }
 }

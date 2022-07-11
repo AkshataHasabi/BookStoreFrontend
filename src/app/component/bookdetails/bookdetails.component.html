@@ -1,34 +1,34 @@
-
 <div class="container">
     <div class="heading">
-         
+
     </div>
     <div class="sort-ways">
         <div class="item-name">
             <h5>Books</h5>
         </div>
-    <div class="no-books">
-        <h4 class="no-of-books">({{totalBooks}} items)</h4>
-    </div>
-    <input type="text" class="search" placeholder="search products..." name="search"  [(ngModel)]="search"  (input)="searchByBookname()">
-    <div class="sort-book">
-        <div  style="margin-left:60mm;margin-right: 0%;"   placeholder="sort by" >
-          <select  class="myvalue" name="filter" id="filter" placeholder="sort by" [(ngModel)]="sort" (change)="sortBy()">
-            <option class="select" selected value="Relevance">Relevance</option>
-            <option class="select" value="Increasing">Price:Low to High</option>
-            <option class="select" value="Decreasing">Price:High to Low</option>
-         </select>
+        <div class="no-books">
+            <h4 class="no-of-books">({{totalBooks}} items)</h4>
         </div>
-    </div>
+        <input type="text" class="search" placeholder="search products..." name="search" [(ngModel)]="search"
+            (input)="searchByBookname()">
+        <div class="sort-book">
+            <div style="margin-left:60mm;margin-right: 0%;" placeholder="sort by">
+                <select class="myvalue" name="filter" id="filter" placeholder="sort by" [(ngModel)]="sort"
+                    (change)="sortBy()">
+                    <option class="select" selected value="Relevance">Relevance</option>
+                    <option class="select" value="Increasing">Price:Low to High</option>
+                    <option class="select" value="Decreasing">Price:High to Low</option>
+                </select>
+            </div>
+        </div>
 
-    <div class="logout">
-        <button (click)="tologinPage()" type="button" class="logout" >Logout</button>
-       </div>
-    <p class="cart-name">cart{{carts.length}}</p>
-        <img routerLink="/cart" src="../../assets/cart.svg"  alt="cart image is loading..." class="cart-image">
+        <div class="logout">
+            <button (click)="tologinPage()" type="button" class="logout">Logout</button>
+        </div>
+        <p class="cart-name">cart{{carts.length}}</p>
+        <img routerLink="/cart" src="../../assets/cart.svg" alt="cart image is loading..." class="cart-image">
         <p class="cart-items"></p>
     </div>
-
 
     <div class="book-container">
         <div class="card card-container" *ngFor="let books of book">
@@ -37,13 +37,13 @@
                 <h6 class="first-txt" *ngIf="book.quantity==0">Out Of Stock</h6>
             </div>
             <div class="card-body">
-            <h5 class="card-title">{{books.bookName}}</h5>
-            <p class="card-text">{{books.autherName}}</p>
-            <p class="card-text">{{books.price}}</p>
-            <div class="button-container" >
-                <button type="button" class="button" (click)="addToCart(books.bookId)">Add to Bag</button>
-                <button type="button" class="button wishlist"  >Wishlist</button>
-            </div>
+                <h5 class="card-title">{{books.bookName}}</h5>
+                <p class="card-text">{{books.autherName}}</p>
+                <p class="card-text">{{books.price}}</p>
+                <div class="button-container">
+                    <button type="button" class="button" (click)="addToCart(books.bookId)">Add to Bag</button>
+                    <button type="button" class="button wishlist">Wishlist</button>
+                </div>
             </div>
         </div>
     </div>

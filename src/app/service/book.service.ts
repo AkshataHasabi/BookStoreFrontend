@@ -16,8 +16,8 @@ export class BookService {
     return this.http.get("http://localhost:8080/book/get");
   }
 
-   // To get all the books from database in the form of assending order by 'PRICE'
-   sortBookInAscending() {
+  // To get all the books from database in the form of assending order by 'PRICE'
+  sortBookInAscending() {
     return this.http.get("http://localhost:8080/book/ascsort");
   }
 
@@ -26,12 +26,12 @@ export class BookService {
     return this.http.get("http://localhost:8080/book/dessort");
   }
 
-  searchBookByName(name:any) {
+  searchBookByName(name: any) {
     return this.http.get("http://localhost:8080/book/name/" + name);
   }
 
-  getById(id:any){
-    return this.http.get("http://localhost:8080/book/id/"+id)
+  getById(id: any) {
+    return this.http.get("http://localhost:8080/book/id/" + id)
   }
 
 }

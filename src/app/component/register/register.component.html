@@ -1,40 +1,44 @@
-
 <div class="form-content">
-    <form  >
-      <div class="form-head">
-        <div class="form-head-text">User-details</div>
+  <form>
+    <div class="form-head">
+      <div class="form-head-text">User-details</div>
+    </div>
+    <div class="form-constrains">
+      <div class="row-content">
+        <label for="firstName" class="label text">First Name</label>
+        <br>
+        <input type="text" class="input" id="firstName" name="firstName" placeholder="Your first name.."
+          autocomplete="off" required [(ngModel)]="user.firstName">
       </div>
-      <div class="form-constrains">
-        <div class="row-content">
-          <label for="firstName" class="label text">First Name</label>
-          <br>
-          <input type="text" class="input"  id="firstName"  name="firstName" placeholder="Your first name.." autocomplete="off" required [(ngModel)]="user.firstName">
-        </div>
-        <div class="row-content">
-          <label for="lastName" class="label text">Last Name</label>
-          <br>
-          <input type="text" class="input"  id="lastName"  name="lastName" placeholder="Your last name.." autocomplete="off" required [(ngModel)]="user.lastName" >
-        </div>
-        <div class="row-content">
-          <label for="email" class="label text">Email</label>
-          <br>
-          <input type="text" class="input" email id="email" name="email" placeholder="Your Email Id..." autocomplete="off" required [(ngModel)]="user.email">
-        </div>
-        <div class="row-content">
-          <label for="address" class="label text">Address</label>
-          <br>
-          <textarea name="address" id="address" placeholder="Your address.." autocomplete="off" [(ngModel)]="user.address" required></textarea>
-        </div>
-        <div class="row-content">
-            <label for="password" class="label text">Password</label>
-            <br>
-            <input type="text" class="input" id="password" minlength="6"  name="password" placeholder="Your Password..." autocomplete="off" required [(ngModel)]="user.password">
-          </div>
-        <div class="buttons-contact">
-          <button type="button" class="button button-cancel" id="cancelButton" >Cancel</button>
-          <button type="button" class="button button-submit" id="submitButton"  (click)="onClick()" >SignUp</button>
-          <button type="reset" class="button button-reset" id="resetButton" >Reset</button>
-        </div>
+      <div class="row-content">
+        <label for="lastName" class="label text">Last Name</label>
+        <br>
+        <input type="text" class="input" id="lastName" name="lastName" placeholder="Your last name.." autocomplete="off"
+          required [(ngModel)]="user.lastName">
       </div>
-    </form>
-  </div>
+      <div class="row-content">
+        <label for="email" class="label text">Email</label>
+        <br>
+        <input type="text" class="input" email id="email" name="email" placeholder="Your Email Id..." autocomplete="off"
+          required [(ngModel)]="user.email">
+      </div>
+      <div class="row-content">
+        <label for="address" class="label text">Address</label>
+        <br>
+        <textarea name="address" id="address" placeholder="Your address.." autocomplete="off" [(ngModel)]="user.address"
+          required></textarea>
+      </div>
+      <div class="row-content">
+        <label for="password" class="label text">Password</label>
+        <br>
+        <input type="text" class="input" id="password" minlength="6" name="password" placeholder="Your Password..."
+          autocomplete="off" required [(ngModel)]="user.password">
+      </div>
+      <div class="buttons-contact">
+        <button type="button" class="button button-cancel" id="cancelButton">Cancel</button>
+        <button type="button" class="button button-submit" id="submitButton" (click)="onClick()">SignUp</button>
+        <button type="reset" class="button button-reset" id="resetButton">Reset</button>
+      </div>
+    </div>
+  </form>
+</div>

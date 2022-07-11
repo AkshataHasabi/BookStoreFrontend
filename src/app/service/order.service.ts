@@ -6,21 +6,21 @@ import { Injectable } from '@angular/core';
 })
 export class OrderService {
 
-  constructor(private http:HttpClient) { }
-  
-  postOrder(order:any){
-    return this.http.post("http://localhost:8080/order/create",order);
-}
+  constructor(private http: HttpClient) { }
 
-getAllOrders(){
-  return this.http.get("http://localhost:8080/order/getallorders");
-}
+  postOrder(order: any) {
+    return this.http.post("http://localhost:8080/order/create", order);
+  }
 
-deleteOrderRecordById(Id:any){
-  return this.http.delete("http://localhost:8080/order/delete/"+Id);
-}
+  getAllOrders() {
+    return this.http.get("http://localhost:8080/order/getallorders");
+  }
 
-getTotalPrice(){
-  return this.http.get("http://localhost:8080/order/totalPrice");
-}
+  deleteOrderRecordById(Id: any) {
+    return this.http.delete("http://localhost:8080/order/delete/" + Id);
+  }
+
+  getTotalPrice() {
+    return this.http.get("http://localhost:8080/order/totalPrice");
+  }
 }

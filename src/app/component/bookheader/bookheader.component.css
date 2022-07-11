@@ -1,13 +1,15 @@
-.container{
-    background-color:white;
+.container {
+    background-color: white;
 }
-.header-content{
+
+.header-content {
     display: flex;
     background-color: #a03037;
     border-radius: 5px;
-    
+
 }
-.logo{
+
+.logo {
     width: 40px;
     height: 30px;
     margin-left: 70px;
@@ -15,70 +17,84 @@
     margin-bottom: 20px;
     cursor: pointer;
 }
-img{
-    width:  100px;
+
+img {
+    width: 100px;
 }
-.header{
+
+.header {
     margin-left: 20px;
     margin-top: 5px;
     font-size: x-large;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     cursor: pointer;
-    
-    
+
+
 }
-.button{
+
+.button {
     display: flex;
-    justify-content:flex-end;
+    justify-content: flex-end;
     margin: 22px 22px 22px 300px;
 }
-button{
+
+button {
     font-weight: 800;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: honeydew;
     margin-left: 20px;
     border-radius: 15px;
     border: 1px solid black;
 }
-button:hover{
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+button:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: palegoldenrod;
 }
-.out{
+
+.out {
     margin-left: 10px;
     width: 100px;
     height: 60px;
 }
-.project-title{
-    color:#e35869;
+
+.project-title {
+    color: #e35869;
     margin-left: 180px;
     margin-top: 15px;
     font-family: "Lucida Console", "Courier New", monospace;
 }
-h1,h2{
+
+h1,
+h2 {
     color: white;
 }
-input{
+
+input {
     height: 30px;
     width: 400px;
     margin: 15px 2px 10px 60px;
     border-radius: 5px;
     border-color: lightblue;
 }
-input:hover{
+
+input:hover {
     box-shadow: 3px 3px 2px #a03037;
 }
-.cart-image{
+
+.cart-image {
     width: 40px;
     height: 40px;
     margin: 10px 2px 2px 2px;
 }
-.cart-name{
+
+.cart-name {
     margin: 18px 2px 2px 300px;
     color: white;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-.cart-items{
+
+.cart-items {
     border-radius: 50%;
     background-color: white;
     height: 18px;

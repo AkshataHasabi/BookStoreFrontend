@@ -15,82 +15,82 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class CartComponent implements OnInit {
   bookData: any;
- 
-  constructor(private route: Router, private cservice:CartService,private orderservice:OrderService,private bookservice:BookService, private userservice:UserService, private router:ActivatedRoute) { }
 
-  cart:any;
-  user:any;
-  book:any;
-  quantity:any;
-  orderSummary=false;
-  order:Ordermodel=new Ordermodel();
-  public TOKEN:any = "";
-  token=this.router.snapshot.paramMap.get('token');
+  constructor(private route: Router, private cservice: CartService, private orderservice: OrderService, private bookservice: BookService, private userservice: UserService, private router: ActivatedRoute) { }
 
-  
+  cart: any;
+  user: any;
+  book: any;
+  quantity: any;
+  orderSummary = false;
+  order: Ordermodel = new Ordermodel();
+  public TOKEN: any = "";
+  token = this.router.snapshot.paramMap.get('token');
+
+
   ngOnInit(): void {
     console.log("fdsgfs")
 
-    this.TOKEN=localStorage.getItem("token");
+    this.TOKEN = localStorage.getItem("token");
     console.log(this.TOKEN);
 
     this.cservice.getallcartdata().subscribe((getData: any) => {
       if (getData.data.length == undefined) {
-        this.route.navigate(["details",this.token]);
+        this.route.navigate(["details", this.token]);
       }
       this.cart = getData;
-      console.log("cart data",this.cart)
+      console.log("cart data", this.cart)
       this.user = this.cart.data[0].user.userId;
-       console.log("user data",this.user)
+      console.log("user data", this.user)
     })
   }
 
   updateCartadd(cartId: number, cart: any) {
-   cart.quantity = cart.quantity + 1;
-    this.cservice.updateCartByCartQuantityByCartId(cartId, cart.quantity).subscribe((data:any) => {
+    cart.quantity = cart.quantity + 1;
+    this.cservice.updateCartByCartQuantityByCartId(cartId, cart.quantity).subscribe((data: any) => {
       window.location.reload();
     });
 
   }
 
   updateCartsubstract(cartId: number, cart: any) {
-    cart.quantity = cart.quantity- 1;
-    this.cservice.updateCartByCartQuantityByCartId(cartId, cart.quantity).subscribe((data:any) => {
+    cart.quantity = cart.quantity - 1;
+    this.cservice.updateCartByCartQuantityByCartId(cartId, cart.quantity).subscribe((data: any) => {
     });
-    }
+  }
 
-    deleteCart(cartId: number) {
-      this.cservice.deleteCartByCartId(cartId).subscribe(data => {
-        window.location.reload()
+  deleteCart(cartId: number) {
+    this.cservice.deleteCartByCartId(cartId).subscribe(data => {
+      window.location.reload()
+    });
+  }
+
+  placeOrder() {
+    for (let i = 0; i < this.cart.data.length; i++) {
+      console.log(this.cart.data.length)
+      this.order.token = this.TOKEN;
+      console.log(this.order.token)
+      this.order.userId = this.cart.data[i].user.userId;
+      console.log("data", this.order.userId);
+      this.order.bookId = this.cart.data[i].bookData.bookId;
+      console.log("bookid", this.order.bookId)
+      this.order.quantity = this.cart.data[i].quantity;
+      this.order.price = this.cart.data[i].bookData.price;
+      this.order.address = this.cart.data[i].user.address;
+      console.log(this.order.address);
+      this.order.cancel = false;
+      this.orderservice.postOrder(this.order).subscribe((getData: any) => {
+        console.log("Order Placed !", getData);
+        this.order = getData;
+        console.log(this.order);
       });
-    }
-  
-    placeOrder(){
-      for(let i=0;i< this.cart.data.length;i++){
-        console.log(this.cart.data.length)
-        this.order.token=this.TOKEN;
-        console.log(this.order.token)
-        this.order.userId=this.cart.data[i].user.userId;
-        console.log("data",this.order.userId);
-        this.order.bookId=this.cart.data[i].bookData.bookId;
-        console.log("bookid",this.order.bookId)
-        this.order.quantity=this.cart.data[i].quantity;
-        this.order.price=this.cart.data[i].bookData.price ;
-        this.order.address=this.cart.data[i].user.address;
-        console.log(this.order.address);
-        this.order.cancel=false;
-        this.orderservice.postOrder(this.order).subscribe((getData:any)=>{
-          console.log("Order Placed !",getData);
-          this.order=getData;
-          console.log(this.order);
-          });
-        this.cservice.deleteCartByCartId(this.cart.data[i].cartId).subscribe(data=>{
+      this.cservice.deleteCartByCartId(this.cart.data[i].cartId).subscribe(data => {
         console.log("Cart removed !");
       })
-      }
-      this.route.navigate(['customer',this.TOKEN]);
-  
     }
+    this.route.navigate(['customer', this.TOKEN]);
+
   }
-  
+}
+
 

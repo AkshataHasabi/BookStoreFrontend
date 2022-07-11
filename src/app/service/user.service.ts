@@ -6,29 +6,29 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  registerUser(user:any){
-    return this.http.post("http://localhost:8080/user/create",user);
+  registerUser(user: any) {
+    return this.http.post("http://localhost:8080/user/create", user);
   }
 
-  getUserRecordById(id:any){
-    return this.http.get("http://localhost:8080/user/get/"+id)
+  getUserRecordById(id: any) {
+    return this.http.get("http://localhost:8080/user/get/" + id)
   }
 
-  userLogin(loginData:any){
-    return this.http.post("http://localhost:8080/user/login",loginData);
-}
+  userLogin(loginData: any) {
+    return this.http.post("http://localhost:8080/user/login", loginData);
+  }
 
-getToken(email:any){
-  return this.http.get("http://localhost:8080/user/getToken/"+ email);
-}
+  getToken(email: any) {
+    return this.http.get("http://localhost:8080/user/getToken/" + email);
+  }
 
-getUserRecordByToken(token:any){
-  return this.http.get("http://localhost:8080/user/getAll/"+token)
-}
+  getUserRecordByToken(token: any) {
+    return this.http.get("http://localhost:8080/user/getAll/" + token)
+  }
 
-updateUserRecordById(token:any,user:any){
-  return this.http.put("http://localhost:8080/user/update/"+token,user);
-}
+  updateUserRecordById(token: any, user: any) {
+    return this.http.put("http://localhost:8080/user/update/" + token, user);
+  }
 }

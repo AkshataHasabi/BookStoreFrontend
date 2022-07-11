@@ -1,28 +1,29 @@
-
 <div class="container">
-    <div class="order-image">
-      <img src="../assets/order-placed.png" alt="Loading...">
-      <h4 class="order-heading">Order Placed Successfully</h4>
-    </div>
-    <div class="message" >
-      <h6>hurray!!!your order is confirmed</h6>
-      <h6>the order id  is</h6><h6 *ngFor="let ordr of order.data" >#{{ordr.orderId}}</h6><h6>save the order id for</h6>
-      <h6>further communication.</h6>
-    </div>
-    <div class="table-details">
-      <table>
-        <thead>
-          <th>Email Us</th>
-          <th>Contact Us</th>
-          <th>Address</th>
-        </thead>
-        <tr>
-          <td>akshata@gmail.com</td>
-          <td>+91 7022595576</td>
-          <td>Home Coming!</td>
-        </tr>
-      </table>
-    </div>
-    <button type="button" (click)="toDash()">Continue Shopping</button>
+  <div class="order-image">
+    <img src="../assets/order-placed.png" alt="Loading...">
+    <h4 class="order-heading">Order Placed Successfully</h4>
   </div>
-  <app-footer></app-footer>
+  <div class="message">
+    <h6>hurray!!!your order is confirmed</h6>
+    <h6>the order id is</h6>
+    <h6 *ngFor="let ordr of order.data">#{{ordr.orderId}}</h6>
+    <h6>save the order id for</h6>
+    <h6>further communication.</h6>
+  </div>
+  <div class="table-details">
+    <table>
+      <thead>
+        <th>Email Us</th>
+        <th>Contact Us</th>
+        <th>Address</th>
+      </thead>
+      <tr>
+        <td>akshata@gmail.com</td>
+        <td>+91 7022595576</td>
+        <td>Home Coming!</td>
+      </tr>
+    </table>
+  </div>
+  <button type="button" (click)="toDash()">Continue Shopping</button>
+</div>
+<app-footer></app-footer>

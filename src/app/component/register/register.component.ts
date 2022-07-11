@@ -10,15 +10,14 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  
-  user: Usermodel=new Usermodel("","","","","");
-  constructor(private route: Router, private service: UserService, private router:ActivatedRoute) { }
+  user: Usermodel = new Usermodel("", "", "", "", "");
+  constructor(private route: Router, private service: UserService, private router: ActivatedRoute) { }
 
-  id:any=this.router.snapshot.paramMap.get('id')
+  id: any = this.router.snapshot.paramMap.get('id')
   ngOnInit(): void {
-    this.service.getUserRecordById(this.id).subscribe((getData:any)=>{
-      console.log("User Record for given token retrieved successfully",getData);
-      this.user=getData;
+    this.service.getUserRecordById(this.id).subscribe((getData: any) => {
+      console.log("User Record for given token retrieved successfully", getData);
+      this.user = getData;
     })
   }
 
@@ -29,7 +28,4 @@ export class RegisterComponent implements OnInit {
       this.route.navigate(['login']);
     });
   }
-  
-  
-
 }
