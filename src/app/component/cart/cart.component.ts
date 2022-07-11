@@ -16,10 +16,7 @@ import { UserService } from 'src/app/service/user.service';
 export class CartComponent implements OnInit {
   bookData: any;
  
- 
-  // carts: any;
   constructor(private route: Router, private cservice:CartService,private orderservice:OrderService,private bookservice:BookService, private userservice:UserService, private router:ActivatedRoute) { }
-  // imagePath = "../../../assets/"
 
   cart:any;
   user:any;
@@ -28,7 +25,6 @@ export class CartComponent implements OnInit {
   orderSummary=false;
   order:Ordermodel=new Ordermodel();
   public TOKEN:any = "";
-  // bookData:any;
   token=this.router.snapshot.paramMap.get('token');
 
   
@@ -44,19 +40,9 @@ export class CartComponent implements OnInit {
       }
       this.cart = getData;
       console.log("cart data",this.cart)
-      // this.user = this.cart.data[0].user.userId;
-      // console.log("karthiiiii",this.user)
       this.user = this.cart.data[0].user.userId;
        console.log("user data",this.user)
     })
-    // this.cservice.getallcartdata().subscribe((getData:any) => {
-    //   this.cart = getData.data;
-    //    this.user = this.cart.data[0].user.userId;
-    //    console.log("gvgv",this.user)
-    //   console.log(getData.data)
-    //   // this.cart = getData.data;
-    // })
-
   }
 
   updateCartadd(cartId: number, cart: any) {
@@ -80,8 +66,6 @@ export class CartComponent implements OnInit {
     }
   
     placeOrder(){
-      // console.log("data",this.cart.bookData.bookId);
-      // this.customerDetails=true;
       for(let i=0;i< this.cart.data.length;i++){
         console.log(this.cart.data.length)
         this.order.token=this.TOKEN;
@@ -100,8 +84,6 @@ export class CartComponent implements OnInit {
           this.order=getData;
           console.log(this.order);
           });
-          // this.router.navigate(['customer',this.token]);
-  
         this.cservice.deleteCartByCartId(this.cart.data[i].cartId).subscribe(data=>{
         console.log("Cart removed !");
       })

@@ -12,14 +12,10 @@
           <p class="card-text">RS.{{crt.bookData.price}}</p> 
           <div class="quantity-change">
             <button type="button" class="btn  quantity-button" *ngIf="crt.quantity>1"  (click)=" updateCartsubstract(crt.cartId,crt)">-</button>
-            <!-- <button type="button" class="btn  quantity-button" *ngIf="crt.quantity===1"  (click)=" deleteCart(crt.cartId)">-</button> -->
             <input type="text" name="quantity" class="book-quantity" [(ngModel)]="crt.quantity">
             <button type="button" class="btn  quantity-button" (click)="updateCartadd(crt.cartId,crt)" >+</button>
             <a class="remove" (click)="deleteCart(crt.cartId)">Remove</a>
           </div>
-          <!-- <div class="place-order">
-            <button type="button" class="btn placeorder-button" (click)="placeOrder(crt)">Place Order</button>
-          </div> -->
         </div>
         
       </div>

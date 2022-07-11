@@ -2,36 +2,27 @@
     <form  >
       <div class="form-head">
         <div class="form-head-text">Customer Details</div>
-        <!-- <a ><img class="form-head-image" src="../../assets/images/sign-out.jpg"
-            alt="logo" (click)="signOut()"></a> -->
       </div>
       <div class="form-constrains">
         <div class="row-content">
           <label for="firstName" class="label text">First Name</label>
           <br>
           <input type="text" class="input" id="firstName" name="firstName" placeholder="Your first name.." autocomplete="off" required [(ngModel)]="user.firstName">
-          <!-- <span class="error" *ngIf="firstName.errors?.['pattern']"><h6>First Name is Invalid and should be more than 3 characters long</h6></span> 
-          <span class="error" *ngIf="firstName.errors?.['required'] && firstName.touched"><h6> First Name is Required</h6></span> -->
         </div>
         <div class="row-content">
           <label for="lastName" class="label text">Last Name</label>
           <br>
           <input type="text" class="input"  id="lastName"  name="lastName" placeholder="Your last name.." autocomplete="off" required [(ngModel)]="user.lastName">
-          <!-- <span class="error" *ngIf="lastName.errors?.['pattern']"><h6>Last Name is Invalid and should be more than 3 characters long</h6></span> 
-          <span class="error" *ngIf="lastName.errors?.['required'] && lastName.touched"><h6>Last Name is Required</h6></span> -->
         </div>
         <div class="row-content">
           <label for="email" class="label text">Email</label>
           <br>
           <input type="text" class="input" email id="email"  name="email" placeholder="Your Email Id..." autocomplete="off" required  [(ngModel)]="user.email">
-          <!-- <span class="error" *ngIf="email.errors?.['email']"><h6>Email is Invalid </h6></span> 
-          <span class="error" *ngIf="email.errors?.['required'] && email.touched"><h6>Email is Required</h6></span> -->
         </div>
         <div class="row-content">
           <label for="address" class="label text">Address</label>
           <br>
           <textarea name="address" id="address" placeholder="Your address.." autocomplete="off" [(ngModel)]="user.address"></textarea>
-          <!-- <span class="error"></span> -->
         </div>
         <div class="buttons-contact">
           <button type="button" class="button button-submit" id="submitButton" (click)="updateUser()" >Update</button>

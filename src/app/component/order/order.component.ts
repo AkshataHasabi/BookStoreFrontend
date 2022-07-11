@@ -33,8 +33,6 @@ export class OrderComponent implements OnInit {
     for(let i=0;i<this.order.data.length;i++){
       this.service.deleteOrderRecordById(this.order.data[i].orderId).subscribe(data=>{
         console.log(data);
-        
-        // this.router.navigate(['dashboard',this.token]);
       });
     }
       this.router.navigate(['details',this.token]);

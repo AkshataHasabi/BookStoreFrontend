@@ -1,4 +1,4 @@
-<p>bookdetails works!</p>
+
 <div class="container">
     <div class="heading">
          
@@ -14,17 +14,16 @@
     <div class="sort-book">
         <div  style="margin-left:60mm;margin-right: 0%;"   placeholder="sort by" >
           <select  class="myvalue" name="filter" id="filter" placeholder="sort by" [(ngModel)]="sort" (change)="sortBy()">
-        <!-- <select class="sortby" placeholder="sortby" (change)="sortBy()" > -->
             <option class="select" selected value="Relevance">Relevance</option>
             <option class="select" value="Increasing">Price:Low to High</option>
             <option class="select" value="Decreasing">Price:High to Low</option>
          </select>
-          <!-- </select> -->
         </div>
     </div>
 
-    <!-- <img routerLink="/wish" src="../../assets/icons/wishlist.svg" alt="wishlist image is loading..." class="cart-image img-wishlist" > -->
-    <!-- <p class="cart-items">1</p> -->
+    <div class="logout">
+        <button (click)="tologinPage()" type="button" class="logout" >Logout</button>
+       </div>
     <p class="cart-name">cart{{carts.length}}</p>
         <img routerLink="/cart" src="../../assets/cart.svg"  alt="cart image is loading..." class="cart-image">
         <p class="cart-items"></p>
@@ -42,24 +41,12 @@
             <p class="card-text">{{books.autherName}}</p>
             <p class="card-text">{{books.price}}</p>
             <div class="button-container" >
-                <!-- <ng-container *ngFor="let i of index"> -->
-                <!-- <button type="button" class="button" (click)="addToCart(book.bookID)" *ngIf="book.quantity!=null &&  this.carts.data[0].book.bookID!=book.bookID">Add to Bag</button>
-                <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button>
-                <button type="button" class="button wishlist" *ngIf="book.quantity!=null && this.carts.data[0].book.bookID!=book.bookID">Wishlist</button>
-                <button type="button" class="button only-wishlist" *ngIf="book.quantity==null && this.carts.data[0].book.bookID!=book.bookID">Wishlist</button> -->
-                <!-- </ng-container> -->
                 <button type="button" class="button" (click)="addToCart(books.bookId)">Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
                 <button type="button" class="button wishlist"  >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
             </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- src="../../assets/images/book1.jpg" -->
-
 
 <app-footer></app-footer>

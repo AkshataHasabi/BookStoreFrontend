@@ -131,3 +131,17 @@
   margin-left: 30px;
   cursor:pointer;
 }
+
+.logout{
+  margin-left: 5%;
+  border: 0px solid #9D9D9D;
+  border-radius: 2px;
+  opacity: 1;
+ 
+  font: normal normal normal 10px/26px Roboto;
+  letter-spacing: 0px;
+  color: #0A0102;;
+  text-transform: capitalize;
+  margin-top: 8px;
+  
+  }

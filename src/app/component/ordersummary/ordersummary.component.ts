@@ -24,7 +24,6 @@ export class OrdersummaryComponent implements OnInit {
    });
    this.bookService.getById(this.order.bookid).subscribe((data:any)=>{
     console.log("Book data retrieved",data);
-    //console.log(this.order.data.bookid.bookid);
     this.book = data.data;
   })
 
